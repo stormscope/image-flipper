@@ -16,7 +16,7 @@ jobs:
     - name: Set up Cloud SDK
       uses: google-github-actions/setup-gcloud@v0.2.0
       with:
-        project_id: ${{ vars.GCP_PROJECT_ID }}
+        project_id: ${{ secrets.GCP_PROJECT_ID }}
         service_account_key: ${{ secrets.GCP_SA_KEY }}
         export_default_credentials: true
 
@@ -32,7 +32,7 @@ jobs:
 
     - name: Deploy to Google App Engine
       env:
-        GOOGLE_CLIENT_ID: ${{ vars.GOOGLE_CLIENT_ID }}
+        GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
         GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
-        GOOGLE_REDIRECT_URI: ${{ vars.GOOGLE_REDIRECT_URI }}
-      run: gcloud app deploy app.yaml --project ${{ vars.GCP_PROJECT_ID }}
+        GOOGLE_REDIRECT_URI: ${{ secrets.GOOGLE_REDIRECT_URI }}
+      run: gcloud app deploy app.yaml --project ${{ secrets.GCP_PROJECT_ID }}
