@@ -30,6 +30,9 @@ jobs:
     #   run: |
     #     python -m pytest tests
 
+    - name: Initialize App Engine application
+      run: gcloud app create --project ${{ secrets.GCP_PROJECT_ID }}
+
     - name: Deploy to Google App Engine
       env:
         GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
