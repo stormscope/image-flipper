@@ -31,7 +31,7 @@ jobs:
     #     python -m pytest tests
 
     - name: Initialize App Engine application
-      run: gcloud app create --project ${{ secrets.GCP_PROJECT_ID }}
+      run: gcloud app create --project ${{ secrets.GCP_PROJECT_ID }} --region europe-west1
 
     - name: Deploy to Google App Engine
       env:
